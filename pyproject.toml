@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "dev"
+version = "0.1.0"
+description = ""
+authors = ["csaybar <csaybar@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.63.0"
+uvicorn = "^0.13.4"
+aiofiles = "^0.6.0"
+Jinja2 = "^2.11.3"
+jinja2-time = "^0.2.0"
+earthengine-api = "^0.1.262"
+python-multipart = "^0.0.5"
+geopandas = "^0.9.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

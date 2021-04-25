@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: flood-fastapi
+    image: flood/fastapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - $HOME/.config/earthengine:/root/.config/earthengine/
+      

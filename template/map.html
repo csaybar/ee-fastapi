@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flood Detection System</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@3.8.3/dist/ol-layerswitcher.css" />
+    <link rel="stylesheet" href="{{ url_for('static', path='css/ol3-sidebar.css') }}" />    
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        html, body, #map {
+            height: 100%;
+            font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+
+        .lorem {
+            font-style: italic;
+            color: #AAA;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="https://github.com/csaybar/fastapi_flood" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">
+                    Flood Detection System
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+                <br>     
+
+                <b> 1. Range base dates </b> <br><br>
+
+                <input type="date" id="init_start" name="init_start" value="2019-03-01" min="2014-01-01"> -
+                <input type="date" id="init_last" name="init_last" value="2019-03-10" min="2014-01-01"><br><br>
+
+                <b> 2. Range flood dates </b> <br><br>
+
+                <input type="date" id="flood_start" name="flood_start" value="2019-03-10" min="2014-01-01"> -
+                <input type="date" id="flood_last" name="flood_last" value="2019-03-23" min="2014-01-01"><br><br>
+
+                <b><label for="fname">3. Flood threshold model:</label></b><br><br>
+                <input type="text" id="threshold" name="threshold" value = "1.30"><br><br>                    
+                
+                <b> 4. Make predictions </b> <br><br>
+
+                <input type="submit" name="action" value="display" id="display">
+                <input type="submit" name="action" value="download" id="download"><br><br>
+
+                <b> 5. Clean map</b> <br><br>
+                <input class="button is-primary" type="submit" value='clean' id="undo">                
+            </div>
+            <br>
+
+            <div class="sidebar-pane" id="methodology">
+                <h1 class="sidebar-header">Methodology<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="settings">
+                <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>                        
+        </div>
+    </div>
+
+
+    <div id="map" class="sidebar-map"></div>
+    
+    <!-- 
+    <a href="https://github.com/csaybar/fastapi_flood/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    -->    
+
+    <!-- Third party libraries-->    
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>    
+    <script src="https://unpkg.com/ol-layerswitcher@3.8.3"></script>
+    <script src="{{ url_for('static', path='js/ol3-sidebar.js') }}"></script>
+    
+    <!-- Local -->    
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>    
+</body>
+</html>
